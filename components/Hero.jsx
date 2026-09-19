@@ -1,92 +1,77 @@
 import Image from "next/image";
 import { profile } from "@/lib/content";
-import { Crystal } from "@/components/Shapes";
+import HeroParticles from "@/components/HeroParticles";
+import Stats from "@/components/Stats";
 
-function Stars() {
+function DownloadIcon() {
   return (
-    <span className="flex gap-0.5 text-accent" aria-hidden="true">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <svg key={index} viewBox="0 0 20 20" className="h-3 w-3" fill="currentColor">
-          <path d="M10 1.6 12.4 7l6 .5-4.6 3.8 1.4 5.8L10 14.6 4.8 17.1l1.4-5.8L1.6 7.5l6-.5L10 1.6Z" />
-        </svg>
-      ))}
-    </span>
+    <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" aria-hidden="true">
+      <path
+        d="M10 3.5v8M6.5 8.5 10 12l3.5-3.5M4 16.5h12"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
 export default function Hero() {
   return (
-    <section id="top" className="hero-beam relative overflow-hidden">
-      <div className="hero-streak" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-6 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:pb-20 lg:pt-8">
-        <div>
-          <h1 className="max-w-[20ch] text-[2.7rem] font-extrabold leading-[1.05] tracking-[-0.05em] sm:text-[3.55rem]">
-            I create production software with vision and care
+    <section id="top" className="relative overflow-hidden pb-6">
+      <HeroParticles />
+      <div className="pointer-events-none absolute -right-24 top-10 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+      <div className="pointer-events-none absolute left-[-8rem] top-40 h-64 w-64 rounded-full bg-accent-soft/40 blur-3xl" />
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pt-8 sm:px-8 lg:grid-cols-[1fr_auto] lg:gap-14 lg:pt-10">
+        <div className="hero-copy max-w-3xl">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
+            Full stack developer · IT specialist · Dubai
+          </p>
+          <h1 className="font-display mt-4 text-[2.2rem] font-extrabold leading-[1.08] tracking-[-0.045em] sm:text-[3.2rem] lg:text-[3.55rem]">
+            Building web platforms that{" "}
+            <span className="text-accent">solve real business problems.</span>
           </h1>
-          <p className="mt-5 max-w-md text-[15px] leading-7 text-muted">
-            Full stack developer in Dubai. I help companies ship telehealth, HR and client platforms —
-            from the interface to the API, database and the IT around them.
+          <p className="mt-5 max-w-2xl text-[15px] leading-7 text-muted">
+            Full Stack Developer with 3+ years of experience building production web applications,
+            internal platforms, and telehealth solutions using React, Next.js, Node.js, MongoDB, and
+            modern web technologies.
+          </p>
+          <p className="mt-4 text-sm font-semibold text-ink">
+            Currently in Dubai · Immediate joining · Open to Full Stack Developer & IT roles
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5">
-            <a href="#work" className="btn-primary">
-              Get started now →
+            <a href="#work" className="btn-primary uppercase">
+              View my work
+              <span aria-hidden="true">→</span>
             </a>
-            <a href="#about" className="btn-ghost">
-              Learn more information →
+            <a href={profile.resumeHref} download className="btn-ghost uppercase tracking-[0.08em]">
+              Download resume
+              <DownloadIcon />
             </a>
-          </div>
-          <div className="mt-8 flex items-center gap-3">
-            <div className="flex -space-x-2">
-              <span className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-bg">
-                <Image src={profile.photo} alt="" width={64} height={64} className="h-full w-full object-cover object-[center_12%]" />
-              </span>
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-[10px] font-bold text-[#04150c] ring-2 ring-bg">
-                FN
-              </span>
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#143326] text-[9px] font-bold text-accent ring-2 ring-bg">
-                DXB
-              </span>
-            </div>
-            <div>
-              <p className="text-xs font-medium">Available in Dubai</p>
-              <div className="mt-0.5 flex items-center gap-2">
-                <p className="text-[11px] text-muted">Immediate joining</p>
-                <Stars />
-              </div>
-            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 grid-rows-[minmax(240px,1fr)_92px] gap-3">
-          <article className="glass-card relative overflow-hidden rounded-[1.4rem] p-5">
-            <Crystal className="pointer-events-none absolute -bottom-4 -right-3 h-32 w-32" />
-            <div className="relative max-w-[10rem]">
-              <p className="text-[2.4rem] font-extrabold leading-none tracking-tight">2</p>
-              <p className="mt-2 text-sm font-medium leading-snug text-muted">Production platforms shipped</p>
-            </div>
-          </article>
-
-          <article className="relative overflow-hidden rounded-[1.4rem] ring-1 ring-white/10">
+        <div className="hero-photo relative mx-auto w-[200px] sm:w-[240px] lg:mx-0 lg:w-[260px]">
+          <div className="hero-orb -right-8 -top-6 h-40 w-40" />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] shadow-[0_22px_50px_rgba(90,50,140,0.16)]">
             <Image
               src={profile.photo}
               alt="Portrait of Fathima NR"
               fill
-              sizes="(max-width: 1024px) 45vw, 280px"
+              sizes="260px"
               preload
               className="object-cover object-[center_12%]"
             />
-          </article>
-
-          <article className="glass-card flex items-center rounded-[1.4rem] px-5">
-            <p className="text-[15px] font-semibold">Immediate joining</p>
-          </article>
-
-          <article className="glass-card flex flex-col justify-center rounded-[1.4rem] px-5">
-            <p className="text-2xl font-extrabold leading-none tracking-tight">3+</p>
-            <p className="mt-1 text-sm text-muted">Years of building</p>
-          </article>
+          </div>
         </div>
+      </div>
+
+      <div className="relative z-10 mt-12 sm:mt-14">
+        <Stats />
       </div>
     </section>
   );
 }
+

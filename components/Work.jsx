@@ -1,6 +1,5 @@
 import { clientProjects, extraClientWork, featuredProjects } from "@/lib/content";
 import HrMock from "./HrMock";
-import Reveal from "./Reveal";
 import TelehealthMock from "./TelehealthMock";
 
 function ExternalIcon() {
@@ -21,17 +20,16 @@ export default function Work() {
   return (
     <section id="work" className="border-y border-line bg-card/40">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <Reveal>
+        <div>
           <p className="text-xs uppercase tracking-[0.22em] text-accent">Selected work</p>
           <h2 className="font-serif mt-3 max-w-2xl text-4xl leading-tight sm:text-5xl">
             Platforms shipped in production, plus client sites still live on the web.
           </h2>
-        </Reveal>
+        </div>
 
         <div className="mt-14 space-y-10">
           {featuredProjects.map((project, index) => (
-            <Reveal key={project.id}>
-              <article className="overflow-hidden rounded-[2rem] border border-line bg-card">
+            <article key={project.id} className="overflow-hidden rounded-[2rem] border border-line bg-card">
                 <div className={`grid gap-8 p-6 sm:p-8 ${project.mock ? "lg:grid-cols-2" : ""}`}>
                   {project.mock === "telehealth" ? <TelehealthMock /> : null}
                   {project.mock === "hr" ? (
@@ -79,19 +77,18 @@ export default function Work() {
                   </div>
                 </div>
               </article>
-            </Reveal>
           ))}
         </div>
 
-        <Reveal className="mt-16">
+        <div className="mt-16">
           <p className="text-xs uppercase tracking-[0.22em] text-muted">Client websites · Techcybe</p>
           <h3 className="font-serif mt-3 text-3xl">Live sites for UAE businesses</h3>
-        </Reveal>
+        </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {clientProjects.map((project, index) => (
-            <Reveal key={project.url} delay={index * 60}>
-              <a
+          {clientProjects.map((project) => (
+            <a
+              key={project.url}
                 href={project.url}
                 target="_blank"
                 rel="noreferrer"
@@ -115,13 +112,12 @@ export default function Work() {
                   ))}
                 </div>
               </a>
-            </Reveal>
           ))}
         </div>
 
-        <Reveal className="mt-8 rounded-3xl border border-dashed border-line px-6 py-5 text-sm text-muted">
+        <div className="mt-8 rounded-3xl border border-dashed border-line px-6 py-5 text-sm text-muted">
           Also shipped at Techcybe: {extraClientWork.join(" · ")}.
-        </Reveal>
+        </div>
       </div>
     </section>
   );
