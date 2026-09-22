@@ -28,7 +28,7 @@ export default function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-        <a href="#top" className="font-display text-[1.05rem] font-extrabold tracking-tight sm:text-xl">
+        <a href="/#top" className="font-display text-[1.05rem] font-extrabold tracking-tight sm:text-xl">
           Fathima NR
         </a>
 
@@ -47,7 +47,7 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <a href="#contact" className="btn-nav hidden lg:inline-flex">
+        <a href="/#contact" className="btn-nav hidden lg:inline-flex">
           Get in touch
           <span aria-hidden="true">→</span>
         </a>
@@ -70,7 +70,7 @@ export default function SiteHeader() {
               {item.label}
             </a>
           ))}
-          <a href="#contact" className="btn-nav inline-flex w-fit" onClick={() => setOpen(false)}>
+          <a href="/#contact" className="btn-nav inline-flex w-fit" onClick={() => setOpen(false)}>
             Get in touch →
           </a>
         </nav>
