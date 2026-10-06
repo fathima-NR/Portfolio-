@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {
   clientProjects,
+  ecommerceProjects,
   extraClientWork,
   featuredProjects,
   uiDemoProjects,
@@ -173,6 +174,46 @@ export default function Projects() {
           ))}
         </div>
         <p className="mt-5 text-sm text-muted">Also shipped: {extraClientWork.join(" · ")}.</p>
+      </div>
+
+      <div className="mt-12">
+        <h3 className="text-xl font-extrabold">E-commerce websites</h3>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {ecommerceProjects.map((project) => (
+          <a
+            key={project.url}
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            className="glass-card overflow-hidden rounded-3xl transition hover:ring-2 hover:ring-accent/30"
+          >
+            <div className="overflow-hidden bg-bg">
+              <Image
+                src={project.image}
+                alt={project.imageAlt}
+                width={1200}
+                height={750}
+                className="h-40 w-full object-cover object-top sm:h-44"
+              />
+            </div>
+            <div className="p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-accent">
+                    {project.label}
+                  </p>
+                  <h4 className="mt-2 font-bold">{project.title}</h4>
+                </div>
+                <span className="text-accent">→</span>
+              </div>
+              <p className="mt-2 text-sm leading-6 text-muted">{project.summary}</p>
+              {project.stack ? (
+                <p className="mt-3 text-xs leading-5 text-ink/80">{project.stack.join(" · ")}</p>
+              ) : null}
+            </div>
+          </a>
+        ))}
+        </div>
       </div>
 
       <div className="mt-12">

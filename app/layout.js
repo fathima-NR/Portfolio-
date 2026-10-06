@@ -29,7 +29,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${jakarta.variable} ${outfit.variable} h-full antialiased`}>
-      <body className="min-h-full bg-bg text-ink font-sans">{children}</body>
+      <body className="min-h-full bg-bg text-ink font-sans" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
